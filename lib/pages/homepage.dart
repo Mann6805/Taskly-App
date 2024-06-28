@@ -1,10 +1,12 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:taskly/models/task.dart';
 
 class Homepage extends StatefulWidget{
 
-  Homepage();
+  const Homepage({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -50,6 +52,8 @@ class _homepagestate extends State<Homepage> {
     Hive.openBox('tasks');
     return FutureBuilder(
       future: Hive.openBox('tasks'), 
+      // ignore: duplicate_ignore
+      // ignore: no_leading_underscores_for_local_identifiers
       builder: (BuildContext _context, AsyncSnapshot _snapshot) {
         if(_snapshot.hasData){
           _box = _snapshot.data;
@@ -67,6 +71,8 @@ class _homepagestate extends State<Homepage> {
   List tasks = _box!.values.toList();
     return ListView.builder(
       itemCount: tasks.length,
+      // ignore: duplicate_ignore
+      // ignore: no_leading_underscores_for_local_identifiers
       itemBuilder: (BuildContext _context, int _index) {
         var task = Task.fromMap(tasks[_index]);
         return ListTile(
